@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/tgover/ai-modeling-skills",
+  "installation_scope": "user",
+  "skills": [
+    {
+      "software": "Blender",
+      "name": "blender-cad-modeling",
+      "path": "skills/blender-cad-modeling",
+      "platform": "Windows; other platforms require adaptation",
+      "workflow": "local background Python",
+      "native_formats": ["blend"],
+      "validation_status": "runtime_verified_on_initial_windows_host; target_machine_selftest_required"
+    },
+    {
+      "software": "SolidWorks",
+      "name": "solidworks-cad-modeling",
+      "path": "skills/solidworks-cad-modeling",
+      "platform": "Windows",
+      "api_baseline": "2022",
+      "workflow": "VBA macro first; optional local COM helpers",
+      "native_formats": ["SLDPRT", "SLDASM"],
+      "validation_status": "source_and_diagnostics_tested; real_SW_runtime_acceptance_pending"
+    }
+  ]
+}

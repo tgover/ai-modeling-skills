@@ -1,0 +1,107 @@
+Option Explicit
+
+' Generated acceptance example; paste into a SolidWorks VBA module.
+' API baseline: 2022. Real SW compilation/execution still needs acceptance.
+' API geometry uses meters; inputs below are millimeters.
+
+Sub main()
+    On Error GoTo Failed
+    Dim app As Object, model As Object, feature As Object, sketch As Object
+    Dim boss As Object, mass As Object, fso As Object, stream As Object
+    Dim bodies As Variant, rectangle As Variant, circle As Object
+    Dim folder As String, partTemplate As String, nativePath As String, stepPath As String
+    Dim length As Double, width As Double, thickness As Double, radius As Double, inset As Double
+    Dim expected As Double, measured As Double, warnings As Long, errors As Long
+    Dim saved As Boolean, rebuilt As Boolean, x As Variant, y As Variant
+    Dim failureCode As Long, failureText As String, nativeWarnings As Long, stepWarnings As Long
+
+    folder = @@OUTPUT_FOLDER@@
+    partTemplate = @@PART_TEMPLATE@@
+    length = @@LENGTH_MM@@ / 1000#
+    width = @@WIDTH_MM@@ / 1000#
+    thickness = @@THICKNESS_MM@@ / 1000#
+    radius = @@HOLE_DIAMETER_MM@@ / 2000#
+    inset = @@EDGE_OFFSET_MM@@ / 1000#
+    nativePath = folder & "\plate.SLDPRT"
+    stepPath = folder & "\plate.step"
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    If Not fso.FolderExists(folder) Then Err.Raise vbObjectError + 1, , "Output folder does not exist."
+    If Not fso.FileExists(partTemplate) Then Err.Raise vbObjectError + 2, , "Part template does not exist."
+    If fso.FileExists(nativePath) Or fso.FileExists(stepPath) Or fso.FileExists(folder & "\validation.txt") Then
+        Err.Raise vbObjectError + 3, , "Existing outputs will not be overwritten."
+    End If
+    Set app = Application.SldWorks
+    Set model = app.NewDocument(partTemplate, 0, 0#, 0#)
+    If model Is Nothing Then Err.Raise vbObjectError + 4, , "NewDocument failed."
+    model.ClearSelection2 True
+
+    ' Select a reference-plane object instead of assuming an English name.
+    Set feature = model.FirstFeature
+    Do While Not feature Is Nothing
+        If feature.GetTypeName2 = "RefPlane" Then Exit Do
+        Set feature = feature.GetNextFeature
+    Loop
+    If feature Is Nothing Then Err.Raise vbObjectError + 5, , "No reference plane in this template."
+    If Not feature.Select2(False, 0) Then Err.Raise vbObjectError + 6, , "Plane selection failed."
+    Set sketch = model.SketchManager
+    sketch.InsertSketch True
+    rectangle = sketch.CreateCornerRectangle(0#, 0#, 0#, length, width, 0#)
+    If IsEmpty(rectangle) Then Err.Raise vbObjectError + 7, , "Rectangle creation failed."
+    For Each y In Array(inset, width - inset)
+        For Each x In Array(inset, length - inset)
+            Set circle = sketch.CreateCircleByRadius(CDbl(x), CDbl(y), 0#, radius)
+            If circle Is Nothing Then Err.Raise vbObjectError + 8, , "Hole contour creation failed."
+        Next x
+    Next y
+    ' Four interior circular loops leave through holes in the boss.
+    sketch.InsertSketch True
+    Set boss = model.FeatureManager.FeatureExtrusion3( _
+        True, False, False, 0, 0, thickness, 0#, _
+        False, False, False, False, 0#, 0#, _
+        False, False, False, False, True, True, True, 0, 0#, False)
+    If boss Is Nothing Then Err.Raise vbObjectError + 9, , "Extrusion failed."
+    boss.Name = "Plate_4_Through_Holes"
+    rebuilt = model.ForceRebuild3(False)
+    If Not rebuilt Then Err.Raise vbObjectError + 10, , "Model rebuild failed."
+    bodies = model.GetBodies2(0, False)
+    If IsEmpty(bodies) Then Err.Raise vbObjectError + 11, , "No solid body created."
+    If UBound(bodies) - LBound(bodies) + 1 <> 1 Then Err.Raise vbObjectError + 12, , "Expected one solid body."
+    Set mass = model.Extension.CreateMassProperty
+    If mass Is Nothing Then Err.Raise vbObjectError + 13, , "Mass properties unavailable."
+    measured = mass.Volume
+    expected = (length * width - 4# * (4# * Atn(1#)) * radius * radius) * thickness
+    If Abs(measured - expected) > expected * 0.000001 Then Err.Raise vbObjectError + 14, , "Volume check failed."
+    model.ClearSelection2 True
+    model.ShowNamedView2 "*Isometric", -1
+    model.ViewZoomtofit2
+
+    ' Retain SaveAs for this simple-part 2022 baseline example.
+    ' Clear selections so the complete model is exported.
+    errors = 0: warnings = 0
+    saved = model.Extension.SaveAs(nativePath, 0, 1, Nothing, errors, warnings)
+    If Not saved Or errors <> 0 Or Not fso.FileExists(nativePath) Then Err.Raise vbObjectError + 15, , "Native save failed."
+    nativeWarnings = warnings
+    model.ClearSelection2 True
+    errors = 0: warnings = 0
+    saved = model.Extension.SaveAs(stepPath, 0, 1, Nothing, errors, warnings)
+    If Not saved Or errors <> 0 Or Not fso.FileExists(stepPath) Then Err.Raise vbObjectError + 16, , "STEP export failed."
+    stepWarnings = warnings
+    Set stream = fso.CreateTextFile(folder & "\validation.txt", False, True)
+    stream.WriteLine "status=geometry_and_save_checks_passed"
+    stream.WriteLine "revision=" & app.RevisionNumber
+    stream.WriteLine "solid_bodies=1"
+    stream.WriteLine "expected_volume_m3=" & CStr(expected)
+    stream.WriteLine "measured_volume_m3=" & CStr(measured)
+    stream.WriteLine "native_save_warnings=" & CStr(nativeWarnings)
+    stream.WriteLine "step_save_warnings=" & CStr(stepWarnings)
+    stream.WriteLine "reopen_and_visual_inspection=pending"
+    stream.WriteLine "sketch_fully_dimensioned=False"
+    stream.Close
+    Debug.Print "Created native and STEP files. Reopen and inspect before accepting the model."
+    Exit Sub
+Failed:
+    failureCode = Err.Number
+    failureText = Err.Description
+    Debug.Print "Modeling failed: " & CStr(failureCode) & " " & failureText
+    Err.Raise failureCode, "SolidWorksPlateMacro", failureText
+End Sub

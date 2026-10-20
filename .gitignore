@@ -5,3 +5,13 @@ local-environment.json
 *.log
 test-results/
 .DS_Store
+outputs/
+.env
+*.swp
+*.SLDPRT
+*.sldprt
+*.SLDASM
+*.sldasm
+*.step
+*.stl
+*.blend

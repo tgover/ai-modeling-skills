@@ -1,0 +1,2 @@
+# Only needed for optional local COM status/run helpers; not for VBA generation.
+pywin32>=308; sys_platform == "win32"
