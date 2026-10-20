@@ -1,0 +1,9 @@
+ezdxf==1.4.4
+fonttools==4.67.0
+numpy==2.5.4
+pillow==12.3.0
+pymupdf==1.28.2
+pyparsing==3.3.3
+PyYAML==6.0.3
+trimesh==5.1.1
+typing_extensions==4.16.0
