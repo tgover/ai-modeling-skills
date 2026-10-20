@@ -9,7 +9,9 @@
       "path": "skills/blender-cad-modeling",
       "platform": "Windows; other platforms require adaptation",
       "workflow": "local background Python",
-      "native_formats": ["blend"],
+      "native_formats": [
+        "blend"
+      ],
       "validation_status": "runtime_verified_on_initial_windows_host; target_machine_selftest_required"
     },
     {
@@ -18,9 +20,23 @@
       "path": "skills/solidworks-cad-modeling",
       "platform": "Windows",
       "api_baseline": "2022",
-      "workflow": "VBA macro first; optional local COM helpers",
-      "native_formats": ["SLDPRT", "SLDASM"],
-      "validation_status": "source_and_diagnostics_tested; real_SW_runtime_acceptance_pending"
+      "workflow": "configured local MCP; native COM/scripts or VBA macros as needed",
+      "modeling_requirements": [
+        "editable_native_features_preferred",
+        "no_unrelated_floating_bodies_in_ordinary_parts",
+        "reuse_master_parts_for_identical_components",
+        "physical_connections_and_mates_checked"
+      ],
+      "native_formats": [
+        "SLDPRT",
+        "SLDASM"
+      ],
+      "validation_status": "SW2024_SP5_MCP_basic_box_native_save_reopen_STEP_reimport_verified_2026-10-20; advanced_features_assemblies_drawings_and_bundled_VBA_not_runtime_verified"
     }
-  ]
+  ],
+  "maintenance": {
+    "sync_policy": "commit_and_push_after_validated_skill_updates_in_same_task",
+    "verify_remote_commit": true,
+    "exclude_machine_config_and_private_project_data": true
+  }
 }

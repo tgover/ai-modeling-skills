@@ -1,4 +1,4 @@
 interface:
   display_name: "SolidWorks 图纸与参考图建模"
-  short_description: "根据图纸与参考图片，生成原生 SolidWorks 建模宏并检查尺寸和导出结果"
+  short_description: "通过 MCP、COM 或宏按图创建原生 SolidWorks 模型，核验尺寸和导出结果"
   default_prompt: "使用 $solidworks-cad-modeling，根据我提供的图纸与参考图片创建可编辑的 SolidWorks 模型。"

@@ -53,3 +53,7 @@ For Huaxi branded presentation imagery, read the user's Huaxi color references w
 - Deliver the editable model, requested exports, preview, modeling source, and a concise list of assumptions or incomplete details. Distinguish measured geometry from inferred detail.
 
 Run `scripts/selftest.py --output '<new-test-directory>'` to verify the local DXF → Blender → GLB/STL → render/reopen pipeline. This synthetic fixture checks the environment; it does not prove arbitrary drawings can be reconstructed automatically.
+
+## Maintainer GitHub sync preference
+
+The maintaining user requested on 2026-10-20 that updates to this modeling skill be synced promptly to [tgover/ai-modeling-skills](https://github.com/tgover/ai-modeling-skills). When maintaining this user's skill, after the appropriate checks, update its release copy, README and catalog, commit and push in the same task, then verify the remote commit and report its link. This is standing authorization for this user's repository maintenance; it does not authorize uploads by other users installing the skill. Preserve portable configuration handling and exclude machine settings, credentials, private drawings/models and task logs. If publication fails, retain local changes and report the unsynced state accurately.
