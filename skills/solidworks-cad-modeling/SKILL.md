@@ -14,6 +14,10 @@ Use installed desktop SolidWorks and the user's chosen version. When a local `so
 - On a new computer, read [setup](references/setup.md). `scripts/sw_status.py` checks registration and attaches to an already-running application without starting one or changing documents. No successful connection means no claim of completed SW modeling.
 - Keep macros, input drawings, reports, and outputs in the current project. Machine paths and private source files do not belong in the skill's GitHub folder.
 
+For equipment reconstruction or refinement, read [reference fidelity and equipment quality](references/equipment-quality.md). Combine relevant views, distinguish measured dimensions from estimates, preserve user-edited geometry/layout, and model physical details with native features and real component structure.
+
+For piping equipment, also read [piping, supports and system checks](references/piping-systems.md). Check functional circuits, port openings, supports and clearance in addition to assembly mates. The added requirements do not expand this package's verified runtime capabilities.
+
 ## Plan and build native features
 
 Read [modeling workflow](references/modeling.md) for version handling, feature selection, units, validation, and failure recovery. Use native sketches and features: extrude/cut, revolve, sweep, loft, fillets, patterns, sheet-metal operations, and assembly mates as appropriate to the actual part. Do not force every drawing into the bundled plate example.
@@ -37,7 +41,7 @@ The bundled `scripts/generate_plate_macro.py` creates a simple four-hole plate s
 - Prefer an already-open SolidWorks session at the same Windows user/elevation. MCP's `solidworks_connect` can launch SW when needed for an authorized task; confirm its returned revision before modeling. `scripts/run_macro.py` runs an existing `.swp` through `RunMacro2`; it never starts a new application. Use it only for the user-requested modeling task and a reviewed macro.
 - New-model tasks create new documents. Do not overwrite or close unrelated open work. Stop on a failed feature or rebuild, inspect the first failure, and correct it instead of continuing an invalid feature chain.
 - API success is not model acceptance. Check the expected body/component count, key dimensions and hole locations, rebuild results, feature tree, and saved files. Check the macro's own report even if `RunMacro2` returns success.
-- Reopen the saved SLDPRT/SLDASM and any requested exchange format, check geometry and assembly references, and inspect orthographic/isometric views. Read back STEP units and shape; an existing export file alone is insufficient.
+- Reopen the saved SLDPRT/SLDASM and any requested exchange format, check geometry and assembly references, and inspect orthographic/isometric and relevant detail views. Save an accessible whole-model overview as the default, with the intended display state. Read back STEP units and shape; an existing export file alone is insufficient.
 - Deliver editable native files, requested exports, a preview, macro/source, parameter manifest, and a concise validation/assumption note. Distinguish generated source, successful API invocation, and validated native geometry.
 
 ## Validation status of this package

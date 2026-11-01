@@ -9,6 +9,17 @@
       "path": "skills/blender-cad-modeling",
       "platform": "Windows; other platforms require adaptation",
       "workflow": "local background Python",
+      "quality_references": [
+        "references/equipment-quality.md",
+        "references/piping-systems.md"
+      ],
+      "modeling_requirements": [
+        "multi_view_reference_fidelity_and_dimension_provenance",
+        "editable_physical_details_and_realistic_materials",
+        "functional_piping_ports_supports_and_clearance_checked",
+        "official_brand_assets_and_static_screen_disclosure",
+        "preserve_user_edits_and_reopen_whole_model_overview"
+      ],
       "native_formats": [
         "blend"
       ],
@@ -25,7 +36,16 @@
         "editable_native_features_preferred",
         "no_unrelated_floating_bodies_in_ordinary_parts",
         "reuse_master_parts_for_identical_components",
-        "physical_connections_and_mates_checked"
+        "physical_connections_and_mates_checked",
+        "multi_view_reference_fidelity_and_dimension_provenance",
+        "editable_physical_details_and_realistic_materials",
+        "functional_piping_ports_supports_and_clearance_checked",
+        "official_brand_assets_and_static_screen_disclosure",
+        "preserve_user_edits_and_reopen_whole_model_overview"
+      ],
+      "quality_references": [
+        "references/equipment-quality.md",
+        "references/piping-systems.md"
       ],
       "native_formats": [
         "SLDPRT",
@@ -35,6 +55,7 @@
     }
   ],
   "maintenance": {
+    "requirements_reviewed_on": "2026-11-01",
     "sync_policy": "commit_and_push_after_validated_skill_updates_in_same_task",
     "verify_remote_commit": true,
     "exclude_machine_config_and_private_project_data": true

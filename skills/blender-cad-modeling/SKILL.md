@@ -22,6 +22,10 @@ Install the skill at user scope when it should be callable across projects. Inst
 - Establish drawing units, one known overall dimension, coordinate origin, floor/elevation convention, and intended output. Continue supported portions when only optional detail is missing. Ask about missing dimensions that materially determine the model.
 - PDF or scanned drawings require the existing PDF skill and image inspection. Do not infer calibrated dimensions from page size alone.
 
+For equipment reconstruction or refinement, read [reference fidelity and equipment quality](references/equipment-quality.md). Combine all relevant views, preserve user-edited model changes, and distinguish verified dimensions from image estimates. Model visible physical parts as editable geometry; use images only for appropriate surface/display content.
+
+For models with piping, read [piping, supports and system checks](references/piping-systems.md). Verify functional circuits, actual port openings, physical support and clearance separately; visual proximity or a collision-free render does not establish a connected system.
+
 ## Prepare and model
 
 Run host tools with the configured environment Python. The Blender embedded Python has a different version: do not add the host virtual environment to Blender's module search path.
@@ -48,7 +52,7 @@ For Huaxi branded presentation imagery, read the user's Huaxi color references w
 ## Verify and deliver
 
 - Compare key bounding dimensions, hole diameters and locations, levels, and counts against the drawing. Use section and orthographic views where hidden detail matters.
-- Save a new `.blend`, reopen it, and check object counts, geometry, packed images, and relevant dimensions. Inspect a rendered preview visually.
+- Save a new `.blend`, reopen it, and check object counts, geometry, packed images, and relevant dimensions. Inspect reference-matched and detail previews visually. Save the default view as an accessible whole-model overview with appropriate clipping and visibility, rather than a close-up or locked camera view.
 - Export only requested mesh formats; verify scale and geometry after export. A mesh file is not an engineering STEP/BREP solid. If STEP or manufacturing precision is required, use an appropriate CAD kernel and verify that separate deliverable.
 - Deliver the editable model, requested exports, preview, modeling source, and a concise list of assumptions or incomplete details. Distinguish measured geometry from inferred detail.
 

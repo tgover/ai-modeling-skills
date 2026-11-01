@@ -15,6 +15,17 @@
 
 SW 建模默认保留拉伸、切除等原生特征，并按实际零件结构建立装配：普通零件不含无关联的悬浮实体，相同规格重复件复用同一零件文件，通过组件实例/阵列与真实配合完成装配。交付前检查连接、支撑、意外自由度和引用关系，详见 [SW 建模规范](skills/solidworks-cad-modeling/references/modeling.md)。这是建模与验收要求，不扩展现有实机验证范围。
 
+## 设备建模与精修要求
+
+2026-11-01 根据近期复建与修改反馈，两个软件技能均补充了以下可复用要求：
+
+- 多图共同校准，提供同视角对照；区分实测、标注、比例估计与原理补全，不用外形相似宣称全部 1:1。
+- 检查系统原理、真实端口连通、内腔、支吊架、机械安装及干涉净空；管路直接、等径、有实际支承，不用空间摆放代替连接。
+- 实体细节保留可编辑几何，圆灯近景圆润，材质符合实物；屏幕图片只用于显示区，官方标志保持保真，静态状态图性质写入交付说明。
+- 在用户最新修改稿上深化，保留布局与显示状态，另存版本并重开；默认总览完整可见，交付依赖齐全、源码/参数及有范围的检查说明。
+
+详见 Blender 的 [设备质量要求](skills/blender-cad-modeling/references/equipment-quality.md) 与 [管路核验](skills/blender-cad-modeling/references/piping-systems.md)，SW 的 [设备质量要求](skills/solidworks-cad-modeling/references/equipment-quality.md) 与 [管路核验](skills/solidworks-cad-modeling/references/piping-systems.md)。每个技能独立包含所需参考，不依赖另一个技能安装。上述为工作要求；本次文档更新不新增软件实机验收结论。型号尺寸、数量、门板方向、开闭形式和配色变更仍由具体项目决定。
+
 ## 在任意电脑安装
 
 1. 在目标电脑安装 Codex 和要使用的建模软件。
