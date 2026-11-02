@@ -11,8 +11,17 @@
       "workflow": "local background Python",
       "quality_references": [
         "references/equipment-quality.md",
-        "references/piping-systems.md"
+        "references/piping-systems.md",
+        "references/quality-gate.md"
       ],
+      "quality_gate": {
+        "entrypoint": "scripts/model_qa.py",
+        "contract_example": "assets/quality-contract.example.json",
+        "hook_scope": "registered_deliverables_in_selected_project_and_session",
+        "trust": "native_user_review_required",
+        "max_repair_requests": 3,
+        "validation_status": "Blender_5_2_2_Windows_8_synthetic_cases_and_hook_protocol_tested_2026-11-02; native_hook_activation_pending_user_trust; not_universal_equipment_or_engineering_acceptance"
+      },
       "modeling_requirements": [
         "multi_view_reference_fidelity_and_dimension_provenance",
         "editable_physical_details_and_realistic_materials",

@@ -51,6 +51,8 @@ For Huaxi branded presentation imagery, read the user's Huaxi color references w
 
 ## Verify and deliver
 
+For every new or modified Blender deliverable, use the [version-bound quality gate](references/quality-gate.md): define and register a task-specific acceptance contract before editing, reopen/inspect after saving, review the required images, and validate the current model before delivery. Follow its bounded repair and interruption handling. Project hooks check registered deliverables only and require the user's native hook trust review; never claim enforcement is active merely because configuration files exist. Read-only questions and skill/test maintenance do not register delivery tasks.
+
 - Compare key bounding dimensions, hole diameters and locations, levels, and counts against the drawing. Use section and orthographic views where hidden detail matters.
 - Save a new `.blend`, reopen it, and check object counts, geometry, packed images, and relevant dimensions. Inspect reference-matched and detail previews visually. Save the default view as an accessible whole-model overview with appropriate clipping and visibility, rather than a close-up or locked camera view.
 - Export only requested mesh formats; verify scale and geometry after export. A mesh file is not an engineering STEP/BREP solid. If STEP or manufacturing precision is required, use an appropriate CAD kernel and verify that separate deliverable.

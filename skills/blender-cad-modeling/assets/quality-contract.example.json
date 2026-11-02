@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "model_kind": "equipment",
+  "model": "model.blend",
+  "objects": ["Body", "Support"],
+  "excluded_objects": [],
+  "dimensions": [
+    {"objects": ["Body"], "expected_mm": [1000, 600, 400], "tolerance_mm": 0.5}
+  ],
+  "counts": [{"objects": ["Body", "Support"], "expected": 2}],
+  "connected_parts": [{"object": "Body", "expected": 1}],
+  "contacts": [{"a": "Body", "b": "Support", "max_gap_mm": 0.5}],
+  "collision_objects": ["Body", "Support"],
+  "allowed_intersections": [],
+  "connections": [],
+  "bore_paths": [],
+  "overview": {"objects": ["Body", "Support"]},
+  "required_views": ["overview", "detail", "reference"],
+  "review_topics": ["与当前多张参考图的比例和位置一致", "实体细节、安装、材质与标志", "默认总览完整可见"],
+  "assumptions": ["示例字段必须按项目资料替换；此示例不包含已验收模型"]
+}

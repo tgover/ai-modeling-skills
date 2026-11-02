@@ -7,6 +7,10 @@ test-results/
 .DS_Store
 outputs/
 .env
+.model-qa/
+*.report.json
+*.review.json
+*.blender.log
 *.swp
 *.SLDPRT
 *.sldprt
