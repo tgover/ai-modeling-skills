@@ -2,6 +2,8 @@
 
 本技能使用本机 Blender 后台脚本创建模型，不需要 Blender MCP、建模服务 API Key 或常驻控制端口。每台电脑配置一次；模型和图纸留在当前工作项目。
 
+照片输入可选安装随包的纯本地“本地参考图”插件，详见 [本地照片工作流](local-photo-workflow.md)。它没有额外 pip 依赖，只增加参考图导入与比例依据记录，不调用云端三维生成。常规 CAD 建模无需安装此插件。
+
 ## 安装位置
 
 使用 Codex 内置 `$skill-installer` 从 GitHub 仓库的 `skills/blender-cad-modeling` 路径安装到个人技能目录，随后在新一轮对话中调用。若客户端仍未发现技能，重启客户端。

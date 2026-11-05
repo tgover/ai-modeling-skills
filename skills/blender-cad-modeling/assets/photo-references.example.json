@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "file": "references/front.png",
+      "view": "FRONT",
+      "location_scene_units": [0, 0, 0],
+      "calibration": {
+        "point_a": [100, 100],
+        "point_b": [1100, 100],
+        "known_distance_mm": 2000,
+        "basis": "photo_planar_estimate"
+      }
+    },
+    {
+      "file": "references/right.png",
+      "view": "RIGHT",
+      "location_scene_units": [0, 0, 0]
+    }
+  ]
+}

@@ -9,6 +9,16 @@
       "path": "skills/blender-cad-modeling",
       "platform": "Windows; other platforms require adaptation",
       "workflow": "local background Python",
+      "photo_workflow": {
+        "reference": "references/local-photo-workflow.md",
+        "addon": "assets/local_photo_reference",
+        "installer": "scripts/install_local_photo_addon.py",
+        "batch_entrypoint": "scripts/prepare_photo_references.py",
+        "network_required": false,
+        "third_party_generation": false,
+        "automatic_3d_reconstruction": false,
+        "validation_status": "Blender_5_2_2_Windows_synthetic_photo_import_calibration_scene_preservation_packed_reopen_verified_2026-11-05; not_equipment_reconstruction_acceptance"
+      },
       "quality_references": [
         "references/equipment-quality.md",
         "references/piping-systems.md",
@@ -64,7 +74,7 @@
     }
   ],
   "maintenance": {
-    "requirements_reviewed_on": "2026-11-01",
+    "requirements_reviewed_on": "2026-11-05",
     "sync_policy": "commit_and_push_after_validated_skill_updates_in_same_task",
     "verify_remote_commit": true,
     "exclude_machine_config_and_private_project_data": true

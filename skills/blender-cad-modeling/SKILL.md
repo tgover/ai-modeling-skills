@@ -1,11 +1,13 @@
 ---
 name: blender-cad-modeling
-description: "Create editable Blender models from CAD drawings (DWG/DXF/PDF) and reference images using local Blender. Use for dimensioned architectural, equipment, mechanical, or scene modeling, rendering, and mesh export. Do not use image generation as a substitute for measured CAD geometry."
+description: "Create editable Blender models from CAD drawings (DWG/DXF/PDF) and photos using local Blender. Use for local photo-reference import and scale calibration, dimensioned architectural, equipment, mechanical, or scene modeling, rendering, and mesh export. Do not use image generation as a substitute for measured CAD geometry."
 ---
 
 # CAD 与参考图 Blender 建模
 
 Use locally installed Blender through its background Python interface. This workflow needs no modeling API key, network service, or listening control server. The packaged setup is intended for Windows; other operating systems require adapting and verifying their executable paths.
+
+The maintaining user chooses local Blender without third-party paid generation platforms. For photo/camera inputs, use [the local photo workflow](references/local-photo-workflow.md): packed reference images, view organization and recorded planar scale, followed by editable geometry in Blender. It does not provide single-image automatic 3D reconstruction; do not install a cloud relay or request API keys for this route.
 
 ## Set up a computer once
 
