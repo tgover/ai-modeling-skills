@@ -26,6 +26,8 @@ Install the skill at user scope when it should be callable across projects. Inst
 
 For equipment reconstruction or refinement, read [reference fidelity and equipment quality](references/equipment-quality.md). Combine all relevant views, preserve user-edited model changes, and distinguish verified dimensions from image estimates. Model visible physical parts as editable geometry; use images only for appropriate surface/display content.
 
+For photo-based reconstruction or improving resemblance, read [the local modeling method](references/photo-modeling-method.md). Establish the subject and reference camera, inspect a simple silhouette/proportion blockout, then refine physical structure and materials. Compare silhouette, neutral clay and finished views with the same camera where useful. Continue to actual editable geometry when modeling is requested; reference import alone is preparation. These are local workflow adaptations, not a port of an upstream image-to-3D network.
+
 For models with piping, read [piping, supports and system checks](references/piping-systems.md). Verify functional circuits, actual port openings, physical support and clearance separately; visual proximity or a collision-free render does not establish a connected system.
 
 ## Prepare and model

@@ -11,6 +11,8 @@
       "workflow": "local background Python",
       "photo_workflow": {
         "reference": "references/local-photo-workflow.md",
+        "modeling_method": "references/photo-modeling-method.md",
+        "modeling_method_status": "source_reviewed_local_staged_workflow_guidance_2026-11-05; no_new_reconstruction_runtime_claim",
         "addon": "assets/local_photo_reference",
         "installer": "scripts/install_local_photo_addon.py",
         "batch_entrypoint": "scripts/prepare_photo_references.py",
@@ -21,6 +23,7 @@
       },
       "quality_references": [
         "references/equipment-quality.md",
+        "references/photo-modeling-method.md",
         "references/piping-systems.md",
         "references/quality-gate.md"
       ],
